@@ -37,12 +37,10 @@ class LinkData(object):
         collection = LinkCollection()
 
         for post in posts:
-            print(post)
             link = Link()
             link.url = post['href']
             link.description = post['description']
             link.tags = post['tags']
-            print(link)
             collection.add_link(link)
 
         return collection

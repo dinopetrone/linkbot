@@ -4,8 +4,6 @@ class LinkCollection(object):
         self.data = data
 
     def add_link(self, link):
-        print(link)
-        print(self.data)
         self.data.append(link)
 
     def __iter__(self):
