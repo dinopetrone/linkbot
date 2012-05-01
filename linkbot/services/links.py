@@ -9,6 +9,13 @@ class LinkService(object):
         """
         return self.dao.recent(count)
 
+    def get_tags(self):
+        """
+        Fetch all of the tags with how many times 
+        it has been used
+        """
+        return self.dao.get_tags()
+
     def get_links_with_tag(self, tag=None):
         """
         Fetch links containing tags

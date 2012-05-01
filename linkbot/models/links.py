@@ -9,7 +9,10 @@ class LinkCollection(object):
     def __iter__(self):
         data = self.data
         for item in data:
-            yield item    
+            yield item
+
+class TagCollection(LinkCollection):
+    pass    
 
 class Link(object):
     
@@ -17,3 +20,9 @@ class Link(object):
         self.url  = None
         self.description = None
         self.tags = []
+
+class Tag(object):
+    
+    def __init__(self):
+        self.name  = None
+        self.count = 0

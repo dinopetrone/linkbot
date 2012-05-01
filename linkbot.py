@@ -37,6 +37,18 @@ def get_tag(context):
 			bot.reply("{}: {}".format(link.description, link.url),context.line)
 		else:
 			bot.reply("{}".format(link.url), context.line)
+
+@bot.command('tags')
+def get_tags(context):
+	bot.reply("fetching all tags...", context.line)
+	tags = sorted(service.get_tags(), key=lambda tag: tag.count, reverse=True)
+	bot.reply("{} tags available".format(len(tags)), context.line)
+	
+	n = 1
+	for tag in tags:
+		bot.reply("{}) {} ({})".format(str(n).zfill(2), tag.name, tag.count), context.line)
+		n += 1
+			
 	
 @bot.command('link')
 def add_link(context):
