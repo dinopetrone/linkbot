@@ -1,0 +1,1 @@
+from .pinboard import pinboard
