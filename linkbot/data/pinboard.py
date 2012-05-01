@@ -14,10 +14,14 @@ except IOError:
 
 class LinkData(object):
     def __init__(self):
-        username = pinboard_cfg['username']
-        password = pinboard_cfg['password']
+        
+        try:
+            username = pinboard_cfg['username']
+            password = pinboard_cfg['password']
+            self.pinboard = pinboard.open(username, password)
+        except:
+            print("Unable to continue. No pinboard.cfg found")
 
-        self.pinboard = pinboard.open(username, password)
 
     def recent(self, count=5):
         posts = self.pinboard.posts(count=count)
