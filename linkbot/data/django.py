@@ -42,3 +42,6 @@ class LinkData(object):
         for tag in tags:
             t = Tag(value=tag,link=l)
             t.save()
+
+    def get_tags(self):
+        raise NotImplemented()

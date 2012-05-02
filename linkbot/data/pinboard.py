@@ -2,6 +2,7 @@ import json
 from linkbot.lib import pinboard
 from linkbot.models import LinkCollection
 from linkbot.models import Link
+from linkbot.models import Tag
 
 pinboard_cfg = None
 
@@ -25,29 +26,42 @@ class LinkData(object):
 
     def recent(self, count=5):
         posts = self.pinboard.posts(count=count)
-        collection = LinkCollection()
+        collection = []
 
         for post in posts:
             link = Link()
             link.url = post['href']
             link.description = post['description']
             link.tags = post['tags']
-            collection.add_link(link)
+            collection.append(link)
         
         return collection
 
     def get_links_with_tag(self, tag):
         posts = self.pinboard.posts(tag=tag)
-        collection = LinkCollection()
+        collection = []
 
         for post in posts:
             link = Link()
             link.url = post['href']
             link.description = post['description']
             link.tags = post['tags']
-            collection.add_link(link)
+            collection.append(link)
 
         return collection
 
     def add_link(self, url, tags):
         self.pinboard.add(url=url, description="", tags=tags)
+
+    def get_tags(self):
+        tags = self.pinboard.tags()
+        collection = []
+        
+        for item in tags:
+            tag = Tag()
+            tag.name = item['name']
+            tag.count = item['count']
+            collection.append(tag)
+
+        return collection
+
