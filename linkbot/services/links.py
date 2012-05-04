@@ -22,8 +22,8 @@ class LinkService(object):
         """
         return self.dao.get_links_with_tag(tag)
 
-    def add_link(self, url, tags=None):
+    def add_link(self, url, description, tags=None):
         """
         Save link with tags
         """
-        self.dao.add_link(url, tags)
+        self.dao.add_link(url, description, tags)
