@@ -50,8 +50,8 @@ class LinkData(object):
 
         return collection
 
-    def add_link(self, url, tags):
-        self.pinboard.add(url=url, description="", tags=tags)
+    def add_link(self, url, description, tags):
+        self.pinboard.add(url=url, description=description, tags=tags)
 
     def get_tags(self):
         tags = self.pinboard.tags()

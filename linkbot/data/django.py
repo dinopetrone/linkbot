@@ -34,7 +34,7 @@ class LinkData(object):
 
         return collection
 
-    def add_link(self, url, tags):
+    def add_link(self, url, description, tags):
         l = Link(url=url,pub_date=timezone.now())
         l.save()
         linkId = l.id
